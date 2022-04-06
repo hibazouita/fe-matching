@@ -4,7 +4,8 @@ const Retrain=()=>{
         <div>
             hibaaaa
             amani
-
+            test1
+            test2
         </div>
 
 
