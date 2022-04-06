@@ -3,6 +3,7 @@ const Retrain=()=>{
     return(
         <div>
             hibaaaa
+            amani
 
         </div>
 
