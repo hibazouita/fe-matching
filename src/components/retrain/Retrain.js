@@ -6,6 +6,7 @@ const Retrain=()=>{
             amani
             test1
             test2
+           ajout
         </div>
 
 
