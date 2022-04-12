@@ -1,6 +1,7 @@
 import  {multiStepContext } from '../../StepContext';
 import { useContext } from 'react'
 import { Button } from 'react-md';
+import Grid from '@mui/material/Grid';
 import { Viewer } from '@react-pdf-viewer/core'; // install this library
 // Plugins
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; // install this library
@@ -19,20 +20,28 @@ const returnFile=()=>{
 }
     return(
         <div className='pdf-center'>
+
           {
-                view &&
+                view && 
                 view.map(v => (
                    
-                        <div className='pdf-container'>
-                            <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
-                                <Viewer fileUrl={v}
-                                       plugins={[defaultLayoutPluginInstance]} />
-                            </Worker>
-                        
-                    </div>
-                    )
+                   <div  className='pdf-container' >
+                       <Grid container  rowSpacing={2} columnSpacing={3}>
+                       <Grid item md={6}>
+                       <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+                           <Viewer fileUrl={v}
+                                  plugins={[defaultLayoutPluginInstance]} />
+                       </Worker> 
+                        </Grid>
+                       
+                       
+               </Grid>
+               </div>
+               )
+           
+               )
                 
-                    )
+                
             }
 
         MATCHING DOC

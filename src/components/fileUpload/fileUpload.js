@@ -1,14 +1,22 @@
+import * as React from 'react';
+import { Axios } from 'axios';
 import { useContext, useState } from 'react'
 import './style.css';
 import FileItem from '../FileItem/FileItem';
+import Upload from '../upload/Upload';
 import Retrain from '../retrain/Retrain';
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dragDropIcon from './file-download.png'
-import { Button } from 'react-md';
+import { Button } from 'react-bootstrap';
+//import { Button } from 'react-md';
 import  {multiStepContext } from '../../StepContext';
 import { Viewer } from '@react-pdf-viewer/core'; // install this library
+import "bootstrap/dist/css/bootstrap.css";
+//import { TextField } from '@material-ui/core';
+import Grid from '@mui/material/Grid';
 
+import { TextField} from '@mui/material';
 // Plugins
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; // install this library
 // Import the styles
@@ -16,52 +24,43 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 // Worker
 import { Worker } from '@react-pdf-viewer/core'; // install this library
+import { Box } from '@material-ui/core';
+import { Col,Row ,Container } from 'react-bootstrap';
 const FileUpload=()=>{
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
-  const {setStep,userData,setUserData,files, setFiles,view, setView}=useContext(multiStepContext)
+  const {setStep,userData,setUserData,files, setFiles,view, setView,sommaire,setSommaire,pdfFileError, setPdfFileError}=useContext(multiStepContext)
   //const [files, setFiles] = useState([])
+  //let {PythonShell}=require(python-shell)
+  // let options ={
+  //   scriptPath : "./",
+  //   args :[files[0],files[1]]
+  // };
+  // const requestScript=()=>{
+  //   PythonShell.run("compare.py",options,(err,res)=>{
+  //    if (res) console.log(res);
+  //   })
+  // }
+
   const fileType=['application/pdf'];
-  const [pdfFileError, setPdfFileError]=useState('');
   const[nbFile,setNbFile]=useState(0)
   const removeFile = (filename) => {
     setFiles(files.filter(file => file.name !== filename))
-  }
-  const uploadHandler = (event) => {
-    const file = event.target.files[0];
-    if(file){
-      if(file&&fileType.includes(file.type)){
-        file.isUploading = true;
-        let reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onloadend = (e) =>{
-              let f=e.target.result
-              if (files.length<2){
-                setFiles([...files, file])
-                setView([...view,f])
-                
-                setPdfFileError('');
-                
-              }
-              else{
-                setPdfFileError('Maximum File 2');
 
-
-              }
-              
-            }
-      }
-      else{
-        setPdfFileError('Please select valid pdf file');
-      }
-    }
-    else{
-      console.log('select your file');
-    }
-    
   }
+  const handleSommaire=(e)=>{
+    setSommaire(e.target.result)
+  }
+ 
   const nextStep=()=>{
     if(files.length==2){
+      // Axios.post('url',
+      // {files}
+      // )
+      // .then(res=>{
+      //   console.log(res);
+      // })
+
       setStep(2)
 
     }
@@ -74,28 +73,18 @@ const FileUpload=()=>{
 
   return (
     <div className="App">
-      <>
+    
+                 <div> <Box> <TextField label="Enter le sommaire"  name="Enter le sommaire" className='input-sommaire' value={sommaire} onChange={handleSommaire}/></Box> </div>
+                 <Grid container  rowSpacing={2} columnSpacing={3}>
+                    <Grid item md={6}>
+                          <Upload/>
+                    </Grid>
+                 <Grid item md={6}>
+                             <Upload/>
+                     </Grid>
+                   </Grid>
 
-                <div className="file-card">
-
-                <div className="file-inputs">
-                    <input type="file" onChange={uploadHandler} className="input-file" />
-                    
-                    <button className='btn-icon'>
-                     
-                            <img src={dragDropIcon} alt="icon" width={40} height={40}  />
-                        
-                    </button>                       
-                </div>
-
-                <p className="main">Supported files</p>
-                <p className="info"> Only PDF</p>
-
-            </div>
-
-                
-
-        </>
+      
             
 
         {pdfFileError&&<div className='error-msg'>{pdfFileError}</div>}
@@ -103,6 +92,7 @@ const FileUpload=()=>{
 
         <>
         <Button  onClick={nextStep} > Next </Button>
+        <Button >testtt</Button>
         <br></br>
         <div className="file-list">
             {
@@ -112,8 +102,8 @@ const FileUpload=()=>{
                     file={f}
                     deleteFile={removeFile} />))
             }
-           
-        </div>
+            </div>
+       
         <>
         {/* {
                 view &&
@@ -132,8 +122,7 @@ const FileUpload=()=>{
             } */}
         </>
         </>
-        <Retrain />
-        
+      
         
     </div>
   );

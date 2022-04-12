@@ -1,36 +1,22 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: 'Open-Sans',sans-serif;
-    color: #343a4a;
-    display: flex;
-    justify-content: center;
-   
-  }
-  .App{
-    text-align: center;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+
   .file-card {
     padding: 1em;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+   
     border: 3px dashed #cbd5e0;
     background-color: #edf2f7;
-    min-width: 380px;
-    min-height: 230px;
+    width: 20px;
+    height: 100px;
+    flex-flow: column nowrap;
+   margin: 20px;
+   margin-left: 10px;
+   padding: 20px;
+
+
+   
+    cursor: pointer;
   }
   .file-inputs {
     position: relative;
@@ -38,39 +24,8 @@
     justify-content: center;
   
   }
-  .btn-next{
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100px;
-      height: 50px;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      color: #fff;
-      background-color: #f55e30;
-      font-size: 1.1rem;
-      cursor: pointer;
-      border-radius: 4px;
-      border: none;
-      outline: none;
-       padding: 1em;
-      transition: background-color 0.4s;
-      box-shadow: 0px 8px 24px rgba(149, 157, 165, 0.5);
-  }
-  .input-btn{
-    background-color: #343a4a;
-    color: #cbd5e0;
-    font-size: 20px;
-    text-align: center;
-    height: 20px;
-    width: 100px;
-    justify-content: center;
-    margin-top: 410px;
-    margin-left: 720px;
-  }
+  
+  
   .input-file {
     justify-content: center;
   
@@ -79,8 +34,6 @@
     opacity: 0;
     z-index: 2;
     cursor: pointer;
-    height: 46px;
-    max-width: 200px;
   }
   
   .error-msg{
@@ -147,7 +100,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .input-sommaire{
-    width: 50%;
   }

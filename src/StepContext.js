@@ -7,10 +7,11 @@ const StepContext =()=>{
     const [finalData,setFinalData]=useState([])
     const [files, setFiles]=useState([])
     const [view, setView]=useState([])
-
+    const[sommaire,setSommaire]=useState("")
+    const [pdfFileError, setPdfFileError]=useState('');
     return (
         <div>
-            <multiStepContext.Provider value={{currentStep,setStep,userData,setUserData,finalData,setFinalData,files,setFiles,view, setView}}>
+            <multiStepContext.Provider value={{currentStep,setStep,userData,setUserData,finalData,setFinalData,files,setFiles,view, setView,sommaire,setSommaire,pdfFileError, setPdfFileError}}>
                 <App/>
             </multiStepContext.Provider>
         </div>
