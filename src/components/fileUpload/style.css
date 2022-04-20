@@ -151,3 +151,10 @@
   .input-sommaire{
     width: 50%;
   }
+  .webviewer {
+    flex: 1;
+    height: 100vh;
+    margin: 8px;
+    -webkit-box-shadow: 1px 1px 10px #999;
+            box-shadow: 1px 1px 10px #999;
+  }

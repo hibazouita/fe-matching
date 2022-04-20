@@ -25,7 +25,9 @@ const returnFile=()=>{
                 view && 
                 view.map(v => (
                    
-                   <div  className='pdf-container' >
+                   <div  className='pdf-container' 
+                   key={v}
+                   >
                        <Grid container  rowSpacing={2} columnSpacing={3}>
                        <Grid item md={6}>
                        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">

@@ -11,9 +11,9 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 // Worker
 
-const Upload=()=>{
+const Upload=({inputnama})=>{
 
-  const {setStep,userData,setUserData,files, setFiles,view, setView,sommaire,setSommaire,pdfFileError, setPdfFileError}=useContext(multiStepContext)
+  const {setStep,userData,setUserData,files, setFiles,view, setView,sommaire,setSommaire,pdfFileError, setPdfFileError,filePath,setFilePath}=useContext(multiStepContext)
   //const [files, setFiles] = useState([])
   const fileType=['application/pdf'];
  // const [pdfFileError, setPdfFileError]=useState('');
@@ -68,8 +68,8 @@ const Upload=()=>{
 
 
                 <div className="file-inputs">
-                    <input type="file"  multiple={false} onChange={uploadHandler} className="input-file" />
-                    
+                    <input type="file"  multiple={false} onChange={uploadHandler} className="input-file" name={inputnama} />
+
                     <button className='btn-icon'>
                      
                             <img src={dragDropIcon} alt="icon" width={40} height={40}  />
